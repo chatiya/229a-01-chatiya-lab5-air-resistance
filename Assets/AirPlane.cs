@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class AirPlane : MonoBehaviour
 {
@@ -21,6 +22,11 @@ public class AirPlane : MonoBehaviour
         {
             rb.AddForce(transform.forward * enginePower);
         }
+
+        Vector3 lift = Vector3.Project(rb.linearVelocity, transform.forward);
+        rb.AddForce(transform.up * liftBooster);
+
+
     }
     
 }
